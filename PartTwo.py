@@ -1,36 +1,53 @@
 def main():
-    choice = input("1. Coffee, 2. Tea, 3. Hot Chocolate: ")
+    choice1 = int(input("1. Coffee, 2. Tea, 3. Hot Chocolate: "))
     coininserted = 0
     price = 0
-    
-    if choice == '1':
+
+    validnumber = inputcheck(choice1)
+    #print(f"You entered a valid number: {validnumber}")
+    if validnumber == 1:
         price = 75
-    elif choice == '2':
+    elif validnumber == 2:
         price = 60  
-    elif choice == '3':
+    elif validnumber == 3:
         price = 80  
-    else:
-        print("Invalid choice")
-        return
     
-    print(f"The price is {price} pence.")
+    
+    print(f"The price is {price}p")
     
     while coininserted < price:
+        coins= [50 ,20, 10 ,5]
         coin = int(input("Insert coins (50p, 20p, 10p, 5p): "))
-        coininserted += coin
-        print(f"Total inserted: {coininserted} pence.")
-        
+        if coin in coins:
+            coininserted += coin
+            print(f"Total inserted: {coininserted}p")
+        else:
+            print("Invalid coin!\n")
+            print()
         if coininserted < price:
-            print(f"Amount due: {price - coininserted} pence.")
+            print(f"Amount due: {price - coininserted}p")
         
         elif coininserted > price:
-            minustopos = abs {price - conininserted}
-            print(f"Change due: {price - coininserted} pence.")
+            change_due = abs(coininserted - price)
+            print(f"Change due: {change_due} pence")
         else:
             pass
 
-
-    
     print("Thanks for your purchase!")
+
+
+
+def inputcheck(choice):
+    while True:
+        if 0< choice <4 :
+           break 
+        else:
+            print("Your choice is invalid please try again!")
+            choice = int(input("1. Coffee, 2. Tea, 3. Hot Chocolate: "))
+    
+
+    return choice
+            
+
 
 main()
